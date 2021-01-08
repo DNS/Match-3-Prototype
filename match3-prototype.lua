@@ -20,6 +20,11 @@ function PrintGem ()
 end
 
 function FindRemoveMatch ()
+	m = false
+	print('FindRemoveMatch ()')
+	PrintGem()
+	print('-------------')
+	
 	-- match horizontal
 	for y=1, 8 do
 		for x=1, 6 do
@@ -30,6 +35,8 @@ function FindRemoveMatch ()
 				else break end
 			end
 			if len >= 3 then
+				m = true
+				--print('match')
 				-- remove match horizontal
 				--print(gems[y][x])
 				--print('match: ', x, y, '; len:', len)
@@ -51,6 +58,11 @@ function FindRemoveMatch ()
 	
 	FillEmptyCells()
 	
+	-- repeat until no match left
+	while m do
+		m = FindRemoveMatch()
+		if not m then return false end
+	end
 	
 end
 
@@ -120,7 +132,7 @@ end
 CreateRandomBoard ()
 	
 
-PrintGem()
+--PrintGem()
 
 --io.stdout:write(2)
 

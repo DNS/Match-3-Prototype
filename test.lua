@@ -1,11 +1,8 @@
 
+r = 1
 
-for y=7, 1, -1 do
-	for i=y+1, 8 do
-		print(y, i)
-	
-	end
-	print('----')
+while r ~= 5 do
+	r = r + 1
+	print(r)
 end
-
 
