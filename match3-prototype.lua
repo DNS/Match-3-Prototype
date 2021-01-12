@@ -1,6 +1,25 @@
--- TODO
--- collect 5 Red, 12 blue, 9 green objects by matching the same
--- gravity pulls randomly!
+--[[
+TODO
+
+Rules:
+match 3 gem, gem disappear, gem fall, new gem created from top and fall
+match 4 gem, turn into 1 special gem (swipe) that if matched further can make all vertical/horizontal gems disappear.
+match 5 gem in T shape, make special gem (bomb) that make 1-gem radius disappear.
+match 5 gem, turn into 1 special gem (ultra) that if matched further can make all gems with the same color matched disappear.
+
+swipe+swipe : make gems 3 row/column disappear???
+bomb+bomb   : make bigger bomb
+
+swipe+bomb  : ???
+
+bomb+swipe  : make all gems with the same color turned into horizontal/vertical swipe gems and make swipe.
+bomb+ultra  : make all gems with the same color turned into bomb and explode.
+
+
+
+Level: collect 5 Red, 12 blue, 9 green objects by matching the same
+Lever: gravity pulls randomly!
+]]
 
 ROCK	= -1	-- unmovable gem / doesn't fall
 EMPTY	= 0
@@ -44,7 +63,7 @@ function FindMatch ()
 				-- remove match horizontal
 				for i=1, len do
 					gems[y][x+i-1] = 0
-					-- animate disappearing gem
+					-- animate disappearing gem, create special gem
 				end
 			end
 		end
@@ -65,7 +84,7 @@ function FindMatch ()
 				-- remove match vertical
 				for i=1, len do
 					gems[y+i-1][x] = 0
-					-- animate disappearing gem
+					-- animate disappearing gem, create special gem
 				end
 			end
 		end
