@@ -51,7 +51,25 @@ function FindMatch ()
 	end
 	
 	-- match vertical
-	
+	for y=1, 6 do
+		for x=1, 8 do
+			len = 1
+			for i=1, 8-y do
+				if gems[y][x] == gems[y+i][x] then
+					len = len + 1
+				else break end
+			end
+			if len >= 3 then
+				m = true
+				--print('match')
+				-- remove match vertical
+				for i=1, len do
+					gems[y+i-1][x] = 0
+					-- animate disappearing gem
+				end
+			end
+		end
+	end
 	
 	return m
 end
@@ -124,7 +142,7 @@ function CreateRandomBoard ()
 			gems[y][x] = math.random(1, 6)
 		end
 	end
-	gems = {
+	--[[gems = {
 		{5,2,2,6,6,1,1,3},
 		{4,6,4,2,3,3,6,2},
 		{4,6,5,4,6,4,2,3},
@@ -134,10 +152,11 @@ function CreateRandomBoard ()
 		{2,5,3,3,2,4,1,2},
 		{4,5,6,4,3,3,1,2},
 	}
-
-	gems[1][1] = 3
-	gems[1][3] = 3
-	gems[1][4] = 3
+	]]
+	
+	gems[6][1] = 3
+	gems[7][1] = 3
+	gems[8][1] = 3
 	
 	FindRemoveMatch()
 	
