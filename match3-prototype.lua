@@ -1,4 +1,8 @@
+-- TODO
+-- collect 5 Red, 12 blue, 9 green objects by matching the same
+-- gravity pulls randomly!
 
+ROCK	= -1	-- unmovable gem / doesn't fall
 EMPTY	= 0
 RED		= 1
 BLUE	= 2
@@ -31,7 +35,7 @@ function FindMatch ()
 			len = 1
 			for i=1, 8-x do
 				if gems[y][x] == gems[y][x+i] then
-					len = len + 1 	
+					len = len + 1
 				else break end
 			end
 			if len >= 3 then
@@ -40,10 +44,14 @@ function FindMatch ()
 				-- remove match horizontal
 				for i=1, len do
 					gems[y][x+i-1] = 0
+					-- animate disappearing gem
 				end
 			end
 		end
 	end
+	
+	-- match vertical
+	
 	
 	return m
 end
@@ -55,12 +63,12 @@ function FindRemoveMatch ()
 	PrintGem()
 	print('-------------')
 	
-	DropDownGem()
+	DropDownGem()	-- animate falling gem
 	
 	PrintGem()
 	print('-------------')
 	
-	FillEmptyCells()
+	FillEmptyCells()	-- animate falling gem
 	
 	-- repeat until no match left
 	while m do
@@ -127,9 +135,9 @@ function CreateRandomBoard ()
 		{4,5,6,4,3,3,1,2},
 	}
 
-	--gems[1][1] = 3
-	--gems[1][3] = 3
-	--gems[1][4] = 3
+	gems[1][1] = 3
+	gems[1][3] = 3
+	gems[1][4] = 3
 	
 	FindRemoveMatch()
 	
@@ -161,8 +169,11 @@ function TrySwap (x1,y1, x2,y2)
 end
 
 function ShowSuggestion ()
-	if FindMatch() then
-		-- Show x1,y1, x2,y2
+	-- Show Possible Match, output: x1,y1, x2,y2
+	for y=1, 8 do
+		for x=1, 6 do
+			
+		end
 	end
 end
 
